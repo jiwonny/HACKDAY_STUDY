@@ -22,7 +22,10 @@ MVVM는 프레임워크 패턴으로, model, view, viewModel 이 세가지로 �
 
 
 
+
+
 ## 구현
+
 
 ```java
 public class MyViewModel extends ViewModel {
@@ -44,6 +47,8 @@ public class MyViewModel extends ViewModel {
 ```
 
 
+
+
 ```java
 public class MyActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
@@ -61,7 +66,10 @@ public class MyActivity extends AppCompatActivity {
 ```
 
 
+
 활동이 다시 생성되면 첫 번째 활동에서 생성된 동일한 myViewModel instance를 받고, 활동이 완료되면 viewModel 개체의 onCleared() 메서드를 호출함.
+
+
 
 
 ## ViewModel의 수명 주기
@@ -69,6 +77,8 @@ public class MyActivity extends AppCompatActivity {
 `ViewModel` 개체의 범위는 `ViewModel` 을 가져올 때 `ViewModelProvider`에 전달되는 lifecycle로 지정된다. 
 
 지정된 범위의 lifecycle이 영구적으로 경과될 때까지 메모리에 남아있음. `ViewModel`이 처음으로 요청되었을 때부터 활동이 끝나고 폐기될 때까지 `ViewModel`은 존재.
+
+
 
 
 ### Fragment에서는?
@@ -79,6 +89,7 @@ Fragment에서도 마찬가지인데, fragment가 분리될 때까지 ViewModel�
 <b>Fragment 간 데이터 공유</b> - 활동에 속한 둘 이상의 프래그먼트가 커뮤니케이션해야 하는 상황일 때.
 
 SharedViewModel을 이용하면 각 프래그먼트의 자체 수명 주기를 침범하지 않고 UI 작동이 가능.
+
 
 
 ```java
@@ -120,7 +131,9 @@ public class DetailFragment extends Fragment {
 
 ```
 
-+ 추가적으로!
+
+<b>추가적으로!</b>
+
 
 `ViewModel` 은 Activity, Fragment나 Context에 대한 참고를 hold하면 안된다. 또한 View의 element를 참조하는 것도 안된다. 이를 참조하는 것 또한 Context를 참조하는 것과 같기 때문(간접적인 Context reference)
 
